@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InsightBridge v4.5 - Complete Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            color: #007bff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .version-info {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+        
+        h2 {
+            color: #0056b3;
+            font-size: 1.8em;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-left: 4px solid #007bff;
+            padding-left: 10px;
+        }
+        
+        h3 {
+            color: #0056b3;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        h4 {
+            color: #495057;
+            font-size: 1.1em;
+            margin-top: 15px;
+            margin-bottom: 8px;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+        
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background: #f0f8ff;
+            padding: 15px;
+            border-left: 4px solid #007bff;
+            border-radius: 3px;
+        }
+        
+        .feature-item strong {
+            color: #007bff;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .info-box {
+            background: #e7f3ff;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 3px;
+        }
+        
+        .section {
+            page-break-inside: avoid;
+        }
+        
+        .toc {
+            background: #f0f0f0;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .endpoint {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        .method {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+        
+        .method-post {
+            background: #28a745;
+        }
+        
+        .method-get {
+            background: #007bff;
+        }
+        
+        .method-put {
+            background: #ffc107;
+        }
+        
+        .method-delete {
+            background: #dc3545;
+        }
+        
+        .file-tree {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+            margin: 15px 0;
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+        }
+
+        .download-section h3 {
+            color: white;
+            margin: 0 0 15px 0;
+            font-size: 1.5em;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: white;
+            color: #007bff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            margin: 0 10px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            background: #f0f0f0;
+        }
+
+        .download-btn.pdf {
+            background: #dc3545;
+            color: white;
+        }
+
+        .download-btn.pdf:hover {
+            background: #c82333;
+        }
+
+        .download-btn.html {
+            background: #28a745;
+            color: white;
+        }
+
+        .download-btn.html:hover {
+            background: #218838;
+        }
+
+        .download-info {
+            color: white;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+            h2 {
+                page-break-after: avoid;
+            }
+            pre {
+                page-break-inside: avoid;
+            }
+            .download-section {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌉 InsightBridge</h1>
+            <p style="font-size: 1.2em; color: #666; margin: 10px 0;">JWT Validation & Enforcement Gateway</p>
+            <div class="version-info">
+                <span class="version-badge">v4.5.0</span>
+                <span class="version-badge" style="background: #17a2b8;">Production Ready</span>
+                <span class="version-badge" style="background: #6f42c1;">Enterprise Grade</span>
+                <p style="margin-top: 10px;">Complete Documentation | January 13, 2026</p>
+            </div>
+        </div>
+
+        <div class="download-section">
+            <h3>📥 Download Documentation</h3>
+            <button class="download-btn pdf" onclick="downloadPDF()">📄 Download as PDF</button>
+            <button class="download-btn html" onclick="downloadHTML()">💾 Download as HTML</button>
+            <div class="download-info">
+                <p>💡 Tip: Use your browser's Print function (Ctrl+P) to save as PDF with formatting</p>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h3 style="margin-top: 0;">📋 Table of Contents</h3>
+            <ol>
+                <li><a href="#overview">Project Overview</a></li>
+                <li><a href="#features">Key Features</a></li>
+                <li><a href="#architecture">Architecture & Structure</a></li>
+                <li><a href="#installation">Installation & Setup</a></li>
+                <li><a href="#api">API Endpoints</a></li>
+                <li><a href="#configuration">Configuration Guide</a></li>
+                <li><a href="#security">Security Implementation</a></li>
+                <li><a href="#scoring">Score-Based Decision Engine</a></li>
+                <li><a href="#deployment">Production Deployment</a></li>
+                <li><a href="#testing">Testing & Validation</a></li>
+            </ol>
+        </div>
+
+        <div class="section" id="overview">
+            <h2>1. Project Overview</h2>
+            <p><strong>InsightBridge v4.5</strong> is an enterprise-grade JWT validation gateway that makes ALLOW/DENY/MONITOR decisions based on multiple security factors:</p>
+            
+            <ul>
+                <li><strong>JWT Token Validation</strong> - Signature verification, expiration checks, format validation</li>
+                <li><strong>Rate Limiting</strong> - Token bucket algorithm to prevent abuse</li>
+                <li><strong>Replay Prevention</strong> - JTI tracking to prevent token reuse</li>
+                <li><strong>Trusted Score Enforcement</strong> - Receiver-controlled decision making (never trusts JWT payload)</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>Core Principle:</strong> Never trust untrusted input (JWT payload) for security decisions. Always validate using receiver-controlled trusted sources.
+            </div>
+
+            <h3>Use Cases</h3>
+            <ul>
+                <li>API Gateway - Central JWT validation for microservices</li>
+                <li>Authentication Proxy - Intermediary between clients and services</li>
+                <li>Security Enforcement - Rate limiting and fraud detection</li>
+                <li>Access Control - Fine-grained decision making based on trust scores</li>
+            </ul>
+        </div>
+
+        <div class="section" id="features">
+            <h2>2. Key Features</h2>
+            
+            <h3>Core Capabilities</h3>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <strong>✅ RS256 JWT Validation</strong><br>
+                    RSA-2048 asymmetric signing with full validation
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Rate Limiting</strong><br>
+                    Token bucket algorithm with configurable burst size
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Replay Detection</strong><br>
+                    In-memory JTI tracking with TTL-based cleanup
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Score-Based Decisions</strong><br>
+                    Trusted source enforcement with configurable thresholds
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Fail-Closed Design</strong><br>
+                    All errors result in DENY for maximum security
+                </div>
+                <div class="feature-item">
+                    <strong>✅ RESTful API</strong><br>
+                    FastAPI with automatic OpenAPI documentation
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Health Monitoring</strong><br>
+                    Real-time system status and metrics
+                </div>
+                <div class="feature-item">
+                    <strong>✅ Request Tracking</strong><br>
+                    X-Request-ID correlation and telemetry logging
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="architecture">
+            <h2>3. Architecture & Project Structure</h2>
+            
+            <h3>Directory Layout</h3>
+            <div class="file-tree">
+insightbridge4.5/
+├── app/                              # Main application
+│   ├── main.py                      # FastAPI entry point
+│   ├── config.py                    # Configuration (Pydantic Settings)
+│   ├── models.py                    # Request/response models
+│   ├── api/                         # API endpoints
+│   ├── core/                        # Business logic
+│   ├── middleware/                  # Middleware components
+│   ├── persistence/                 # Data layer
+│   └── telemetry/                   # Monitoring & logging
+├── tests/                           # Test suite
+│   ├── unit/                        # Unit tests
+│   ├── integration/                 # Integration tests
+│   └── chaos/                       # Chaos/stress tests
+├── scripts/                         # Utility scripts
+│   └── generate_test_jwts.py       # Token generation
+├── keys/                            # Cryptographic keys
+├── docs/                            # Documentation
+├── .env.example                     # Configuration template
+├── requirements.txt                 # Dependencies
+└── README.md                        # This documentation
+            </div>
+
+            <h3>Core Components</h3>
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Purpose</th>
+                    <th>Key File</th>
+                </tr>
+                <tr>
+                    <td><strong>JWT Validator</strong></td>
+                    <td>Validates token signature, expiration, format</td>
+                    <td>core/jwt_validator.py</td>
+                </tr>
+                <tr>
+                    <td><strong>Decision Engine</strong></td>
+                    <td>Makes ALLOW/DENY/MONITOR decisions</td>
+                    <td>core/decision_engine.py</td>
+                </tr>
+                <tr>
+                    <td><strong>Rate Limiter</strong></td>
+                    <td>Token bucket rate limiting</td>
+                    <td>core/rate_limiter.py</td>
+                </tr>
+                <tr>
+                    <td><strong>Replay Cache</strong></td>
+                    <td>Prevents duplicate token usage</td>
+                    <td>core/replay_cache.py</td>
+                </tr>
+                <tr>
+                    <td><strong>Score Provider</strong></td>
+                    <td>Retrieves trusted scores</td>
+                    <td>core/score_provider.py</td>
+                </tr>
+                <tr>
+                    <td><strong>Telemetry Logger</strong></td>
+                    <td>Structured event logging</td>
+                    <td>telemetry/logger.py</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section" id="installation">
+            <h2>4. Installation & Setup</h2>
+            
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>Python 3.11 or higher</li>
+                <li>pip (Python package manager)</li>
+                <li>Virtual environment (recommended)</li>
+                <li>Git (for cloning)</li>
+            </ul>
+
+            <h3>Step-by-Step Installation</h3>
+            
+            <h4>1. Clone or Extract Project</h4>
+            <pre>cd insightbridge4.5</pre>
+
+            <h4>2. Create Virtual Environment</h4>
+            <pre>python -m venv .venv
+
+# Activate (Windows)
+.\.venv\Scripts\Activate.ps1
+
+# Activate (macOS/Linux)
+source .venv/bin/activate</pre>
+
+            <h4>3. Install Dependencies</h4>
+            <pre>pip install -r requirements.txt</pre>
+
+            <h4>4. Generate JWT Keys</h4>
+            <pre>python scripts/generate_test_jwts.py</pre>
+
+            <h4>5. Configure Environment</h4>
+            <pre>cp .env.example .env
+# Edit .env with your values</pre>
+
+            <h4>6. Run Server</h4>
+            <pre>python -m uvicorn app.main:app --host 127.0.0.1 --port 8000 --reload</pre>
+
+            <h4>7. Verify Installation</h4>
+            <pre>curl http://localhost:8000/health</pre>
+        </div>
+
+        <div class="section" id="api">
+            <h2>5. API Endpoints</h2>
+
+            <h3>Core Validation Endpoint</h3>
+            <div class="endpoint">
+                <div class="method method-post">POST</div>
+                <strong>/validate</strong>
+                <p style="margin-top: 10px;">Validate JWT token and get enforcement decision</p>
+                <p><strong>Request Body:</strong></p>
+                <pre>{"token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9..."}</pre>
+                <p><strong>Response:</strong></p>
+                <pre>{
+  "decision": "ALLOW",
+  "reason": null,
+  "request_id": "550e8400-e29b-41d4-a716-446655440000",
+  "timestamp": "2026-01-13T10:30:00",
+  "score": 95
+}</pre>
+                <p><strong>Decision Values:</strong></p>
+                <ul>
+                    <li><span class="success">ALLOW</span> - Request permitted (score ≥ 70)</li>
+                    <li><span class="warning">MONITOR</span> - Request monitored (50 ≤ score < 70)</li>
+                    <li><span class="error">DENY</span> - Request denied (score < 50)</li>
+                </ul>
+            </div>
+
+            <h3>Health & Monitoring Endpoints</h3>
+            <div class="endpoint">
+                <div class="method method-get">GET</div>
+                <strong>/health</strong> - System health status
+            </div>
+            <div class="endpoint">
+                <div class="method method-get">GET</div>
+                <strong>/metrics</strong> - Aggregated metrics summary
+            </div>
+            <div class="endpoint">
+                <div class="method method-get">GET</div>
+                <strong>/status</strong> - Detailed application status
+            </div>
+            <div class="endpoint">
+                <div class="method method-get">GET</div>
+                <strong>/docs</strong> - Interactive API documentation (Swagger UI)
+            </div>
+        </div>
+
+        <div class="section" id="configuration">
+            <h2>6. Configuration Guide</h2>
+
+            <h3>Environment Variables</h3>
+            <table>
+                <tr>
+                    <th>Variable</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td><code>ENVIRONMENT</code></td>
+                    <td>development</td>
+                    <td>Environment: development, staging, production</td>
+                </tr>
+                <tr>
+                    <td><code>SECRET_KEY</code></td>
+                    <td>(required)</td>
+                    <td>Application secret key (generate with secrets module)</td>
+                </tr>
+                <tr>
+                    <td><code>JWT_ALGORITHM</code></td>
+                    <td>RS256</td>
+                    <td>JWT signing algorithm (RS256, HS256, etc.)</td>
+                </tr>
+                <tr>
+                    <td><code>JWT_PUBLIC_KEY_PATH</code></td>
+                    <td>./keys/public_key.pem</td>
+                    <td>Path to RSA public key</td>
+                </tr>
+                <tr>
+                    <td><code>JWT_EXPIRATION_HOURS</code></td>
+                    <td>1</td>
+                    <td>Token expiration time in hours</td>
+                </tr>
+                <tr>
+                    <td><code>RATE_LIMIT_REQUESTS_PER_MINUTE</code></td>
+                    <td>100</td>
+                    <td>Rate limit threshold</td>
+                </tr>
+                <tr>
+                    <td><code>RATE_LIMIT_BURST_SIZE</code></td>
+                    <td>120</td>
+                    <td>Maximum burst size for rate limiting</td>
+                </tr>
+            </table>
+
+            <h3>Generating Secure Configuration</h3>
+            <pre># Generate SECRET_KEY
+python -c "import secrets; print(secrets.token_urlsafe(32))"
+
+# Output example:
+# Drmhze6EPcv0fN_81Bj-nA_7d4hdsI2w3w6dH8twMVw
+
+# Add to .env
+SECRET_KEY=Drmhze6EPcv0fN_81Bj-nA_7d4hdsI2w3w6dH8twMVw</pre>
+        </div>
+
+        <div class="section" id="security">
+            <h2>7. Security Implementation</h2>
+
+            <h3>JWT Validation Process</h3>
+            <ol>
+                <li><strong>Signature Verification</strong> - RSA-2048 public key verification</li>
+                <li><strong>Expiration Check</strong> - Validates <code>exp</code> claim with 30-second clock drift tolerance</li>
+                <li><strong>Not-Before Check</strong> - Validates <code>nbf</code> claim to prevent premature use</li>
+                <li><strong>Format Validation</strong> - Ensures required fields (<code>jti</code>, <code>sub</code>) are present</li>
+                <li><strong>Malformed Detection</strong> - Rejects invalid or corrupted tokens</li>
+            </ol>
+
+            <h3>Replay Attack Prevention</h3>
+            <ul>
+                <li>Tracks JWT ID (<code>jti</code>) claims in memory</li>
+                <li>Rejects duplicate <code>jti</code> values</li>
+                <li>Automatic TTL-based cleanup of expired entries</li>
+            </ul>
+
+            <h3>Rate Limiting</h3>
+            <ul>
+                <li><strong>Algorithm:</strong> Token bucket</li>
+                <li><strong>Default:</strong> 100 requests per minute</li>
+                <li><strong>Burst Size:</strong> 120 requests maximum</li>
+                <li><strong>Configuration:</strong> Per-environment via environment variables</li>
+            </ul>
+
+            <h3>Fail-Closed Design</h3>
+            <div class="warning-box">
+                <strong>⚠️ Important:</strong> All errors result in DENY
+                <ul style="margin-top: 10px;">
+                    <li>JWT validation error → DENY</li>
+                    <li>Score retrieval error → DENY (score = 0)</li>
+                    <li>Rate limit exceeded → DENY</li>
+                    <li>Replay detected → DENY</li>
+                    <li>Server error → DENY</li>
+                </ul>
+            </div>
+
+            <h3>Key Management</h3>
+            <ul>
+                <li><strong>Algorithm:</strong> RSA-2048 (2048-bit keys)</li>
+                <li><strong>Rotation:</strong> Every 12-24 months recommended</li>
+                <li><strong>Storage:</strong> Secure file system with restricted permissions</li>
+                <li><strong>Backup:</strong> Keep secure backup of private key</li>
+            </ul>
+        </div>
+
+        <div class="section" id="scoring">
+            <h2>8. Score-Based Decision Engine</h2>
+
+            <h3>Score Thresholds</h3>
+            <table>
+                <tr>
+                    <th>Score Range</th>
+                    <th>Decision</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td><strong>≥ 70</strong></td>
+                    <td><span class="success">ALLOW</span></td>
+                    <td>Request is permitted</td>
+                </tr>
+                <tr>
+                    <td><strong>50-69</strong></td>
+                    <td><span class="warning">MONITOR</span></td>
+                    <td>Request allowed but logged</td>
+                </tr>
+                <tr>
+                    <td><strong>< 50</strong></td>
+                    <td><span class="error">DENY</span></td>
+                    <td>Request is blocked</td>
+                </tr>
+            </table>
+
+            <h3>Score Validation (Score > 9)</h3>
+            <p>The system includes validation ensuring scores above 9 are properly handled:</p>
+            <ul>
+                <li>Scores from 10-49 → DENY (below threshold)</li>
+                <li>Scores from 50-69 → MONITOR (monitoring range)</li>
+                <li>Scores 70+ → ALLOW (trusted range)</li>
+            </ul>
+
+            <h3>Score Provider Implementation</h3>
+            <p>Scores are retrieved from <strong>trusted receiver-controlled sources</strong>, never from JWT payload:</p>
+            <ul>
+                <li><strong>Database</strong> - Query user reputation from database</li>
+                <li><strong>Redis Cache</strong> - Fast in-memory cache with database fallback</li>
+                <li><strong>External API</strong> - Call scoring service with proper authentication</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>Key Principle:</strong> Never trust scores embedded in JWT tokens. Always fetch from internal trusted source.
+            </div>
+        </div>
+
+        <div class="section" id="deployment">
+            <h2>9. Production Deployment</h2>
+
+            <h3>Pre-Deployment Checklist</h3>
+            <ul>
+                <li>☐ Generate new RSA key pair</li>
+                <li>☐ Set <code>ENVIRONMENT=production</code></li>
+                <li>☐ Generate strong <code>SECRET_KEY</code></li>
+                <li>☐ Configure database connection string</li>
+                <li>☐ Enable HTTPS/TLS</li>
+                <li>☐ Set <code>DEBUG_MODE=false</code></li>
+                <li>☐ Configure rate limiting appropriately</li>
+                <li>☐ Setup monitoring and alerting</li>
+                <li>☐ Run full test suite</li>
+                <li>☐ Review security configuration</li>
+            </ul>
+
+            <h3>Docker Deployment</h3>
+            <pre>docker build -t insightbridge:4.5.0 .
+docker run -p 8000:8000 \
+  -e ENVIRONMENT=production \
+  -e SECRET_KEY=your-secret-key \
+  -e DATABASE_URL=postgresql+asyncpg://... \
+  insightbridge:4.5.0</pre>
+
+            <h3>Performance Tuning</h3>
+            <ul>
+                <li><strong>Workers:</strong> Use multiple Uvicorn workers for concurrency</li>
+                <li><strong>Database Pooling:</strong> Configure SQLAlchemy connection pool</li>
+                <li><strong>Redis Caching:</strong> Enable Redis for distributed replay cache</li>
+                <li><strong>Load Balancer:</strong> Use load balancer for horizontal scaling</li>
+            </ul>
+        </div>
+
+        <div class="section" id="testing">
+            <h2>10. Testing & Validation</h2>
+
+            <h3>Running Tests</h3>
+            <pre># All tests
+pytest -v
+
+# Unit tests
+pytest tests/unit/ -v
+
+# Integration tests
+pytest tests/integration/ -v
+
+# With coverage
+pytest --cov=app tests/ -v</pre>
+
+            <h3>Generating Test Tokens</h3>
+            <pre># Complete test suite
+python scripts/generate_test_jwts.py
+
+# Specific token types
+python scripts/generate_test_jwts.py --type valid --user-id alice
+python scripts/generate_test_jwts.py --type expired
+python scripts/generate_test_jwts.py --type custom --exp-hours 24</pre>
+
+            <h3>Manual Testing with curl</h3>
+            <pre># Get test token
+TOKEN=$(cat test_tokens.txt | grep -A1 "Valid Token" | tail -1)
+
+# Test validation
+curl -X POST http://localhost:8000/validate \
+  -H "Content-Type: application/json" \
+  -d "{\"token\": \"$TOKEN\"}"
+
+# Expected response:
+# {"decision": "ALLOW", "score": 95, ...}</pre>
+
+            <h3>Test Coverage</h3>
+            <ul>
+                <li><strong>JWT Validation:</strong> Valid, expired, future, malformed tokens</li>
+                <li><strong>Rate Limiting:</strong> Single requests, burst, exhaustion</li>
+                <li><strong>Replay Detection:</strong> Duplicate JTI, different tokens</li>
+                <li><strong>Score Thresholds:</strong> High (ALLOW), medium (MONITOR), low (DENY)</li>
+                <li><strong>Error Handling:</strong> All failure modes</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>InsightBridge v4.5.0 - Complete Documentation</strong></p>
+            <p>Generated: January 13, 2026 | Status: Production Ready ✅</p>
+            <p>For the latest updates, visit the project repository or documentation folder</p>
+        </div>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            // Get the HTML content
+            const htmlContent = document.documentElement.outerHTML;
+            
+            // Create a temporary iframe
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            document.body.appendChild(iframe);
+            
+            // Write HTML to iframe
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            iframeDoc.open();
+            iframeDoc.write(htmlContent);
+            iframeDoc.close();
+            
+            // Trigger print dialog to save as PDF
+            iframe.contentWindow.print();
+            
+            // Clean up
+            setTimeout(() => {
+                document.body.removeChild(iframe);
+            }, 1000);
+        }
+
+        function downloadHTML() {
+            // Get the HTML content
+            const htmlContent = document.documentElement.outerHTML;
+            
+            // Create a blob from the HTML content
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            
+            // Create download link
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'InsightBridge-v4.5-Documentation.html';
+            
+            // Trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Clean up
+            URL.revokeObjectURL(url);
+        }
+
+        // Show success message on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('📄 InsightBridge v4.5 Documentation Loaded');
+            console.log('💡 Click the download buttons above to export documentation');
+        });
+    </script>
+</body>
+</html>
